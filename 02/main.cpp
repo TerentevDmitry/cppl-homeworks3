@@ -9,31 +9,45 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    try {
+    SmartArray sArr1(5);
+    sArr1.smartArrayPushBack(1);
+    sArr1.smartArrayPushBack(11);
+    sArr1.smartArrayPushBack(111);
+    sArr1.smartArrayPushBack(1111);
+    sArr1.smartArrayPushBack(11111);
 
-        SmartArray sArr(5);
-        sArr.smartArrayPushBack(1);
-        sArr.smartArrayPushBack(4);
-        sArr.smartArrayPushBack(155);
-        sArr.smartArrayPushBack(14);
-        sArr.smartArrayPushBack(15);
+    sArr1.smartArrayPrint();
 
-        sArr.smartArrayPrint();
+    std::cout << "***********************************" << std::endl;
 
-        // Раскомментировать чтоб произошел out_of_range по добавлению элемента в массив
-        //sArr.smartArrayPushBack(999);
-        //sArr.smartArrayPrint();
+    SmartArray sArr2(5);
+    sArr2.smartArrayPushBack(22222);
+    sArr2.smartArrayPushBack(2222);
+    sArr2.smartArrayPushBack(222);
+    sArr2.smartArrayPushBack(22);
+    sArr2.smartArrayPushBack(2);
 
-        std::cout << "***********************************" << std::endl;
+    sArr2.smartArrayPrint();
 
-        std::cout << sArr.smartArrayGetElement(2) << std::endl;
+    std::cout << "**************В 3 массиве должны быть 1*********************" << std::endl;
+    SmartArray sArr3(sArr1);
+    sArr3.smartArrayPrint();
 
-        //Раскомментировать чтоб произошел out_of_range по взятию элемента из массива
-        std::cout << sArr.smartArrayGetElement(99) << std::endl;
-    }
-    catch (const std::exception& ex) {
-        std::cout << ex.what() << std::endl;
-    }
+    std::cout << "**************В 4 массиве должны быть 2*********************" << std::endl;
+    SmartArray sArr4 = sArr2;
+    sArr4.smartArrayPrint();
+
+    std::cout << "**************В 4 массиве должны быть 1*********************" << std::endl;
+
+    sArr4 = sArr3;
+    sArr3.smartArrayPrint();
+
+    std::cout << "***********************************" << std::endl;
+
+
+
+
+
 
     std::cout << "\n\nHello World!\n";
 }

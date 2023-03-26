@@ -53,4 +53,40 @@ int SmartArray::smartArrayGetElement(const int gettingElementByIndex)
 	{
 		return smArray_[gettingElementByIndex];
 	}
+}
+SmartArray::SmartArray(const SmartArray& other)
+{
+	this->sizeOfArray_ = other.sizeOfArray_;
+
+	//создаем новый массив2 длинной как массив1(other) с которого копируем.
+	smArray_ = new int[other.sizeOfArray_];
+
+	//копируем элементы из массив1(other) в массив2
+	for (int i = 0; i < other.sizeOfArray_; i++)
+	{
+		this->smArray_[i] = other.smArray_[i];
+	}
+	std::cout << std::endl;
+	
+	std::cout << this << " -  онструктор  опировани€ SmartArray(const SmartArray& other)\n\n";
+};
+
+SmartArray SmartArray::operator=(const SmartArray& other)
+{
+	this->sizeOfArray_ = other.sizeOfArray_;
+
+	//создаем новый массив sArr3 длинной как массив с которого копируем sArr2.
+	smArray_ = new int[other.sizeOfArray_];
+
+	//копируем элементы из sArr2 в sArr3
+	for (int i = 0; i < other.sizeOfArray_; i++)
+	{
+		this->smArray_[i] = other.smArray_[i];
+	}
+	std::cout << std::endl;
+
+	std::cout << this << " - ќператор копировани€ SmartArray::operator=()\n\n";
+
+	return *this->smArray_;
+
 };
