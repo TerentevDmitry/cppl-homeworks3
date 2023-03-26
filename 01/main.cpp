@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-#include "Print.h"
 #include "SmartArray.h"
 
 int main()
@@ -28,7 +27,7 @@ int main()
     }
    
     
-    int ii = 0;
+    int ii = 0; //Индекс по порядку
     try {
 
         SmartArray sArr(initialSizeOfArray);
