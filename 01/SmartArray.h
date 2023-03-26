@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include <variant>
 #include <string>
 
 
@@ -11,9 +10,6 @@
 		int* smArray_ = 0;
 		int countForPushBack_ = 0;
 		int sizeOfArray_ = 0;
-
-		void checkIndex(int checkingIndex);
-
 
 	public:
 		SmartArray(const int sizeOfArray);

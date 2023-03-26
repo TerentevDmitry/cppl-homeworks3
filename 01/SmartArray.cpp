@@ -1,63 +1,56 @@
 #include "SmartArray.h"
 
-
-enum class Notes
+SmartArray::SmartArray(const int sizeOfArray)
 {
-	outOfRange = 1
+	sizeOfArray_ = sizeOfArray;
+
+	std::cout << this << " - Создание SmartArray::SmartArray(int SizeOfArray)";
+	smArray_ = new int[sizeOfArray] {};
+
+	//заполняем массив значениями равными индексам
+	for (int i = 0; i < sizeOfArray; i++)
+	{
+		smArray_[i] = i;
+	}
+	std::cout << std::endl;
 };
 
-	SmartArray::SmartArray(const int sizeOfArray)
+SmartArray::~SmartArray()
+{
+	delete[] smArray_;
+	std::cout << this << " - Уничтожение SmartArray::~SmartArray()\n\n";
+};
+
+// To print smartArray
+void SmartArray::smartArrayPrint()
+{
+	for (int i = 0; i < sizeOfArray_; i++)
+		std::cout << smArray_[i] << " ";
+
+	std::cout << std::endl;
+};
+
+void SmartArray::smartArrayPushBack(const int addingElement)
+{
+	if (countForPushBack_ >= sizeOfArray_)
 	{
-		sizeOfArray_ = sizeOfArray;
-
-		std::cout << "Создание SmartArray::SmartArray(int SizeOfArray)";
-
-		smArray_ = new int[sizeOfArray] {};
-		std::cout << std::endl;
-	};
-
-	SmartArray::~SmartArray()
+		throw std::out_of_range("PushBack - Out_of_range");
+	}
+	else
 	{
-		delete[] smArray_;
-		std::cout << "Уничтожение SmartArray::~SmartArray()\n\n";
-	};
+		smArray_[countForPushBack_] = addingElement;
+		++countForPushBack_;
+	}
+};
 
-	// To print smartArray
-	void SmartArray::smartArrayPrint()
+int SmartArray::smartArrayGetElement(const int gettingElementByIndex)
+{
+	if ((gettingElementByIndex >= sizeOfArray_) || (gettingElementByIndex < 0))
 	{
-		for (int i = 0; i < sizeOfArray_; i++)
-			std::cout << smArray_[i] << " ";
-
-		std::cout << std::endl;
-	};
-
-	void SmartArray::smartArrayPushBack(const int addingElement)
+		throw std::out_of_range("GetElement - Out_of_range");
+	}
+	else
 	{
-		if (countForPushBack_ >= sizeOfArray_)
-		{
-			std::cout << "Нельзя больше добавить элементов. Массив заполнен...\n\n";
-		}
-		else
-		{
-			smArray_[countForPushBack_] = addingElement;
-			++countForPushBack_;
-		}
-	};
-
-	int SmartArray::smartArrayGetElement(const int gettingElementByIndex)
-	{
-		SmartArray::checkIndex(gettingElementByIndex);
-
 		return smArray_[gettingElementByIndex];
-	};
-
-	//private
-	void SmartArray::checkIndex(int gettingElementByIndex)
-	{
-
-		//return ((gettingElementByIndex >= 0) && (gettingElementByIndex < sizeOfArray_));
-		if ((gettingElementByIndex >= sizeOfArray_) || (gettingElementByIndex < 0))
-		{ 
-			throw std::out_of_range("IndexOfElement_Out_of_range");	
-		}
-	};
+	}
+};
