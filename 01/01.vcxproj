@@ -138,11 +138,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Print.cpp" />
     <ClCompile Include="SmartArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Print.h" />
     <ClInclude Include="SmartArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
