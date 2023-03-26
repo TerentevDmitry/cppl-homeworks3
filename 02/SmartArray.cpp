@@ -56,7 +56,7 @@ enum class Notes
 	{
 
 		//return ((gettingElementByIndex >= 0) && (gettingElementByIndex < sizeOfArray_));
-		if ((gettingElementByIndex >= sizeOfArray_) || (gettingElementByIndex < 0))
+		if (gettingElementByIndex >= sizeOfArray_) 
 		{ 
 			throw std::out_of_range("IndexOfElement_Out_of_range");	
 		}

@@ -1,20 +1,65 @@
-﻿// 02.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// Задача 1. Умный массив
 //
 
 #include <iostream>
 
+#include "SmartArray.h"
+
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    setlocale(LC_ALL, "Russian");
+
+    int initialSizeOfArray = 0;
+
+    std::cout << "Введите начальное кол-во элементов:> ";
+    std::cin >> initialSizeOfArray;
+
+    //Проверка правильности введенных данных
+    while (!std::cin.good())
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Неверные данные. Кол-во элементов - целое положительное число.\n";
+        std::cout << "Введите начальное кол-во элементов:> ";
+        //std::cout << "> ";
+        std::cin >> initialSizeOfArray;
+    }
+
+
+    int ii = 0; //Индекс по порядку
+    try {
+
+        SmartArray sArr(initialSizeOfArray);
+
+        for (int i = 0; i < initialSizeOfArray; i++)
+        {
+            sArr.smartArrayPushBack(i);
+        }
+
+        sArr.smartArrayPrint();
+
+        // Раскомментировать чтоб произошел out_of_range по добавлению элемента в массив
+        //sArr.smartArrayPushBack(ii++);
+        //sArr.smartArrayPrint();
+
+        std::cout << sArr.smartArrayGetElement((ii = 0)++) << std::endl;
+
+        while (ii < initialSizeOfArray)
+        {
+            std::cout << sArr.smartArrayGetElement(ii++) << std::endl;
+        }
+
+        std::cout << "***********************************" << std::endl;
+
+        //Раскомментировать чтоб произошел out_of_range по взятию элемента из массива
+        std::cout << sArr.smartArrayGetElement(ii++) << std::endl;
+
+        std::cout << sArr.smartArrayGetElement(2) << std::endl;
+    }
+    catch (const std::exception& ex) {
+        std::cout << ex.what() << std::endl;
+    }
+
+    std::cout << "\n\nHello World!\n";
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.

@@ -1,4 +1,4 @@
-﻿// 01.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// Задача 1. Умный массив
 //
 
 #include <iostream>
@@ -53,7 +53,7 @@ int main()
         std::cout << "***********************************" << std::endl;
 
         //Раскомментировать чтоб произошел out_of_range по взятию элемента из массива
-        std::cout << sArr.smartArrayGetElement(ii++) << std::endl;
+        std::cout << sArr.smartArrayGetElement(9) << std::endl;
 
         std::cout << sArr.smartArrayGetElement(2) << std::endl;
     }
@@ -61,5 +61,5 @@ int main()
         std::cout << ex.what() << std::endl;
     }
 
-   std::cout << "\n\nHello World!\n";
+    std::cout << "\n\nHello World!\n";
 }
