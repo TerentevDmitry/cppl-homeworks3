@@ -73,20 +73,25 @@ SmartArray::SmartArray(const SmartArray& other)
 
 SmartArray SmartArray::operator=(const SmartArray& other)
 {
-	this->sizeOfArray_ = other.sizeOfArray_;
-
-	//создаем новый массив sArr3 длинной как массив с которого копируем sArr2.
-	smArray_ = new int[other.sizeOfArray_];
-
-	//копируем элементы из sArr2 в sArr3
-	for (int i = 0; i < other.sizeOfArray_; i++)
+	if (this != &other)
 	{
-		this->smArray_[i] = other.smArray_[i];
+		this->sizeOfArray_ = other.sizeOfArray_;
+		
+		delete[] smArray_;
+
+		//создаем новый массив sArr3 длинной как массив с которого копируем sArr2.
+		smArray_ = new int[other.sizeOfArray_];
+
+		//копируем элементы из sArr2 в sArr3
+		for (int i = 0; i < other.sizeOfArray_; i++)
+		{
+			this->smArray_[i] = other.smArray_[i];
+		}
+		std::cout << std::endl;
+
+		//std::cout << this << " - Оператор копирования SmartArray::operator=()\n\n";
+
+		return *this;
 	}
-	std::cout << std::endl;
-
-	std::cout << this << " - Оператор копирования SmartArray::operator=()\n\n";
-
-	return *this->smArray_;
-
+		return *this;
 };

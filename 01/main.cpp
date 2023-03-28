@@ -29,7 +29,7 @@ int main()
         std::cout << sArr.smartArrayGetElement(2) << std::endl;
         
         //Раскомментировать чтоб произошел out_of_range по взятию элемента из массива
-        std::cout << sArr.smartArrayGetElement(99) << std::endl;
+        //std::cout << sArr.smartArrayGetElement(99) << std::endl;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
