@@ -40,14 +40,12 @@ int main()
     std::cout << "**************В 4 массиве должны быть 1*********************" << std::endl;
 
     sArr4 = sArr3;
-    sArr3.smartArrayPrint();
+    sArr4.smartArrayPrint();
+
+    std::cout << "**************Сам в себя*********************" << std::endl;
+    sArr4 = sArr4;
 
     std::cout << "***********************************" << std::endl;
-
-
-
-
-
 
     std::cout << "\n\nHello World!\n";
 }
